@@ -189,7 +189,11 @@ Mechanics that matter:
   ESLint files/ignore globs, to `check-file/filename-naming-convention`, to the
   type-aware lint program's `include` with a JSX compiler option such as
   `"jsx": "react-jsx"`, to formatter ownership and its ignore files, and to Knip
-  `project`/entry scopes. Do not ignore owned source to make checks pass.
+  `project`/entry scopes. For `.jsx`, also set `"allowJs": true` in that lint
+  program's `compilerOptions`; adding files to `include` alone does not admit
+  JavaScript inputs. `"checkJs": true` is optional for JavaScript type diagnostics,
+  not required for project inclusion. Keep the lint options separate from an
+  existing runtime/build program. Do not ignore owned source to make checks pass.
 
 Coverage by category, so nothing is missed when recreating the ruleset:
 

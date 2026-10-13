@@ -146,7 +146,11 @@ Adjust `include` to the target's real source, test, script, ops, and benchmark
 directories. When the target has `.tsx`/`.jsx`, add those extensions to `include`
 and set a JSX compiler option matching the runtime (for example
 `"jsx": "react-jsx"`); the TS/MJS example above does not cover those extensions
-automatically. The simple profile keeps the same compiler options without the
+automatically. For `.jsx`, also set `"allowJs": true` in the lint-only program's
+`compilerOptions`; `include` alone does not admit JavaScript inputs. Setting
+`"checkJs": true` is optional for JavaScript type diagnostics, not required for
+project inclusion. Keep these options in the lint program without changing the
+runtime/build program. The simple profile keeps the same compiler options without the
 `typeRoots`/`types` entries and includes only its own source path plus
 `.deno-types.d.ts`; add the Node type entries only when the lint program actually
 uses Node APIs.
